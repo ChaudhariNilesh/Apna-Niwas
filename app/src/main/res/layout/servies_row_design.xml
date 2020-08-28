@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lay"
+    android:layout_width="match_parent"
+    android:background="#FFFFFF"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="67dp">
+
+        <ImageView
+            android:id="@+id/imServiceImg"
+            style="@style/ServiceImageViewStyle"
+            android:src="@drawable/circle_image" />
+
+        <TextView
+            android:id="@+id/tvServiceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:text="@string/plumber"
+            android:textSize="@dimen/_15sdp" />
+        <ImageButton
+            android:id="@+id/ibServiceNum"
+            style="@style/ServiceCallButtonStyle"/>
+    </RelativeLayout>
+
+</LinearLayout>

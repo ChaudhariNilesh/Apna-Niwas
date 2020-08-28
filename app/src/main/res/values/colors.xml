@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color tools:override="true"
+        name="mtrl_textinput_default_box_stroke_color" >#FF0000</color>
+
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryRipple">#423F51B5</color>
+
+    <color name="black">#585555</color>
+    <color name="blue">#3D73DD</color>
+    <color name="darkblue">#0055FF</color>
+    <color name="lightblue">#8BB0FF</color>
+    <color name="transparent">#003D73DD</color>
+    <color name="white">#FFFFFF</color>
+    <color name="nosowhite">#A3A3A3</color>
+
+    <!--Nilesh Color-->
+
+
+    <color name="colorBlue">#3D73DD</color>
+    <color name="colorLightBlue">#2F54AD</color>
+    <color name="colordarkBlue">#6CADF8</color>
+    <color name="Blue7100">#82B1FF</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorBlack">#000</color>
+    <color name="Blue100">#E1F5FE</color>
+    <color name="Gray100">#E8EAF6</color>
+    <color name="Gray">#BDBDC4</color>
+    <color name="colorAccent">#c8e8ff</color>
+    <color name="baige">#d6d6c2</color>
+    <color name="colorRed">#FF0000</color>
+    <color name="colorLigthGreen">#00FF00</color>
+    <color name="colorDullWhite">#F0F0F0</color>
+
+    <!--COMMENT LAYOUT COLOR -->
+    <color name="grey">#bfbfbf</color>
+    <color name="link_blue">#005ce6</color>
+
+
+    <color name="grey_60">#666666</color>
+    <color name="grey_80">#37474F</color>
+    <color name="grey_90">#263238</color>
+    <color name="dullWhite">#F0F0F0</color>
+
+
+</resources>

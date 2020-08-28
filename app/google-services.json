@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "920678607412",
+    "firebase_url": "https://apnaniwas-1577032217985.firebaseio.com",
+    "project_id": "apnaniwas-1577032217985",
+    "storage_bucket": "apnaniwas-1577032217985.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:920678607412:android:0162baf3ee3518ac553861",
+        "android_client_info": {
+          "package_name": "com.example.apnaniwas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "920678607412-aa2sgee0dfnbb0g0knq2ra7a24c1ts2o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.apnaniwas",
+            "certificate_hash": "fe0fc6e25d63762aa3f4d66c9d71eab95c073ce3"
+          }
+        },
+        {
+          "client_id": "920678607412-3j3dkm23jvehff8b03mgpsbr5fob6ei6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgnYXW7Iyoef8RrrXIEVvvNoz2q4nFfhs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "920678607412-3j3dkm23jvehff8b03mgpsbr5fob6ei6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

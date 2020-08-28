@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/notification"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".notification.NotificationBoard"
+    android:background="@color/Gray100"
+    android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/notice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_8sdp"
+            card_view:cardCornerRadius="10dp"
+            card_view:cardElevation="5dp"
+            card_view:cardUseCompatPadding="true"
+           >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:padding="@dimen/_10sdp"
+               >
+
+                <TextView
+                    android:id="@+id/tv_notice_subject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_notice_by"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/tv_notice_subject"
+                    android:layout_marginBottom="-34dp"
+                    android:textSize="@dimen/_12sdp" />
+
+
+                <ImageButton
+                    android:id="@+id/ib_notice_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/tv_notice_by"
+                    android:layout_marginStart="@dimen/_180sdp"
+                    android:layout_marginBottom="-66dp"
+                    android:background="#FFF"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp"
+
+                 />
+
+                <ImageButton
+                    android:id="@+id/ib_NoticeQry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/tv_notice_by"
+                    android:layout_marginStart="@dimen/_238sdp"
+                    android:layout_marginBottom="-66dp"
+                    android:background="#fff"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"
+                    android:onClick="notification"
+                    />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
+<!--
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/notice1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:padding="@dimen/_8sdp">
+
+                <TextView
+                    android:id="@+id/notice_subject1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subject"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/notice_by1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_subject1"
+                    android:layout_marginBottom="-34dp"
+                    android:text="@string/posted_by"
+                    android:textSize="@dimen/_12sdp" />
+                <ImageButton
+                    android:id="@+id/notice_details1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_by1"
+                    android:layout_marginStart="@dimen/_180sdp"
+                    android:layout_marginBottom="-66dp"
+                    android:background="#FFF"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"
+                    android:src="@drawable/ic_info"
+                    android:text="@string/details"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp" />
+
+                <ImageButton
+                    android:id="@+id/notice_comments1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_by1"
+                    android:layout_marginStart="@dimen/_238sdp"
+                    android:layout_marginBottom="-66dp"
+                    android:background="#fff"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"
+                    android:src="@drawable/ic_NoticeQry" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/notice2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:padding="@dimen/_8sdp">
+
+
+
+                <TextView
+                    android:id="@+id/notice_subject2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subject"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/notice_by2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_subject2"
+                    android:layout_marginBottom="-34dp"
+                    android:text="@string/posted_by"
+                    android:textSize="@dimen/_12sdp" />
+
+                <ImageButton
+                    android:id="@+id/notice_details2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_by2"
+                    android:layout_marginStart="@dimen/_180sdp"
+                    android:layout_marginBottom="-66dp"
+                    android:background="#FFF"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"
+                    android:src="@drawable/ic_info"
+                    android:text="@string/details"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp" />
+                <ImageButton
+                    android:id="@+id/notice_comments2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_by2"
+                    android:layout_marginStart="@dimen/_238sdp"
+                    android:layout_marginBottom="-66dp"
+                    android:background="#fff"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"
+                    android:src="@drawable/ic_NoticeQry" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/notice3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:padding="@dimen/_8sdp">
+
+                <TextView
+                    android:id="@+id/notice_subject3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subject"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/notice_by3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_subject3"
+                    android:layout_marginBottom="-34dp"
+                    android:text="@string/posted_by"
+                    android:textSize="@dimen/_12sdp" />
+                <ImageButton
+                    android:id="@+id/notice_details3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_by3"
+                    android:layout_marginStart="@dimen/_180sdp"
+                    android:layout_marginBottom="-66dp"
+                    android:background="#FFF"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"
+                    android:src="@drawable/ic_info"
+                    android:text="@string/details"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp" />
+
+                <ImageButton
+                    android:id="@+id/notice_comments3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_by3"
+                    android:layout_marginStart="@dimen/_238sdp"
+                    android:layout_marginBottom="-66dp"
+                    android:background="#fff"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"
+                    android:src="@drawable/ic_NoticeQry" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/notice4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:padding="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/notice_subject4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subject"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/notice_by4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_subject4"
+                    android:layout_marginBottom="-34dp"
+                    android:text="@string/posted_by"
+                    android:textSize="@dimen/_12sdp" />
+                <ImageButton
+                    android:id="@+id/notice_details4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_by4"
+                    android:layout_marginStart="@dimen/_180sdp"
+                    android:layout_marginBottom="-66dp"
+                    android:background="#FFF"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"
+                    android:src="@drawable/ic_info"
+                    android:text="@string/details"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp" />
+
+                <ImageButton
+                    android:id="@+id/notice_comments4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_by4"
+                    android:layout_marginStart="@dimen/_238sdp"
+                    android:layout_marginBottom="-66dp"
+                    android:background="#fff"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"
+                    android:src="@drawable/ic_NoticeQry" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+-->
+
+
+
+    <!--                <Button
+                        android:id="@+id/notice_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignBottom="@id/notice_by"
+                        android:layout_marginStart="@dimen/_100sdp"
+                        android:layout_marginBottom="-65dp"
+                        android:background="@color/design_default_color_primary"
+                        android:text="@string/details"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10sdp"
+                        android:paddingLeft="@dimen/_14sdp"
+                        android:paddingRight="@dimen/_14sdp"
+
+                        />-->
+
+    <!--                <Button
+                        android:id="@+id/notice_comments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignBottom="@id/notice_by"
+                        android:layout_marginStart="@dimen/_180sdp"
+                        android:layout_marginBottom="-65dp"
+                        android:background="@color/design_default_color_primary"
+                        android:text="@string/comments"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_10sdp"
+                        android:paddingLeft="@dimen/_14sdp"
+                        android:paddingRight="@dimen/_14sdp"/>-->

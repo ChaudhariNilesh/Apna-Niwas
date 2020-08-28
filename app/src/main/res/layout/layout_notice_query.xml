@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relMain">
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/cir_profile_image"
+            android:layout_width="39dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/exampleperson"
+            app:civ_border_color="#BDBDC4"
+            app:civ_border_width="2dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/relLayout1"
+            android:layout_toRightOf="@id/cir_profile_image"
+            android:background="@drawable/grey_border_bottom"
+            android:layout_marginTop="@dimen/_6sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="60dp"
+                android:layout_marginBottom="20dp"
+                android:layout_centerVertical="true">
+
+
+                <TextView
+                    android:id="@+id/tv_qry_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:text="USER 0 "/>
+
+
+                <TextView
+                    android:id="@+id/tv_qry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_qry_username"
+                    android:text="QRY 0 "
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp"
+                    android:id="@+id/tv_qry_time"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_below="@id/tv_qry_username"
+                    android:text="Now"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tv_qry_reply"
+                    android:text="Reply"
+                    android:textStyle="bold"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_below="@id/tv_qry_username"
+                    android:layout_toRightOf="@id/tv_qry_time"/>
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

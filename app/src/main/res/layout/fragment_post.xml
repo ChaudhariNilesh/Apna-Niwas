@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="10"
+    tools:context=".PostFragment">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:elevation="6dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:title="Post"
+        app:titleTextColor="@color/colorWhite"
+        app:layout_scrollFlags="scroll|enterAlways" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_weight="5"
+        android:src="@color/darkblue"
+        android:id="@+id/insidePostImage"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:id="@+id/insidePostTitle"
+        android:textSize="@dimen/_25sdp"
+        android:text="Attention"
+        android:layout_margin="@dimen/_10sdp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3.5"
+        android:layout_margin="@dimen/_8sdp"
+        android:text="Here by"
+        android:textSize="@dimen/_18sdp"
+        android:id="@+id/insidePostDesc"/>
+
+
+</LinearLayout>

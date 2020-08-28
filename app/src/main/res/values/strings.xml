@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">Apna niwas</string>
+    <string name="welcome">Welcome To \nApna Niwas</string>
+    <string name="title_activity_navigation">navigation</string>
+
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="enter_your_ndetails">Enter Your Details</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+
+    <string name="title_activity_bottom_navigation">Apna Niwas</string>
+    <string name="title_home">Home</string>
+    <string name="title_payment">Payment</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_post">Your Posts</string>
+    <string name="profile_about">About</string>
+    <string name="about_clickable">Add a coupe of word about who you are.</string>
+    <string name="ask_info">Get advice and feedback from a community of people with similar interest.</string>
+    <string name="ask">Ask</string>
+    <string name="create_a_new_post">Create a new post</string>
+    <string name="account">Account</string>
+    <string name="go_account">Go to your account</string>
+    <string name="account_info">Check payments options,manage your password and more.</string>
+    <string name="subject">Subject</string>
+    <string name="posted_by">Posted By :</string>
+    <string name="details">Details</string>
+    <string name="comments">comments</string>
+    <string name="notices">Notices</string>
+    <string name="title_activity_payment_drawer">payment_drawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="notice_title">Notice Board</string>
+    <string name="notice_qry">Notice Queries</string>
+
+
+
+    <!--SERVICES STRING-->
+
+    <string name="title_services">Services</string>
+    <string name="plumber">Plumber</string>
+    <string name="electrician">Electrician</string>
+    <string name="garbage">Garbage</string>
+    <string name="gas">Gas</string>
+    <string name="hospital">Hospital</string>
+    <string name="security">Security</string>
+    <string name="request">Request</string>
+    <string name="complain">Complain</string>
+    <string name="water_shortage">Water Shortage</string>
+    <string name="parking_problem">Parking Problem</string>
+    <string name="society_garbage">Society Garbage</string>
+    <string name="enter_messsage">Enter messsage</string>
+    <string name="discussion">Discussion</string>
+    <string name="block_chairman">Block Chairman</string>
+    <string name="email_or_mobile_number">Email or Mobile Number</string>
+    <string name="verify">verify</string>
+    <string name="back_to_login">Back To Login</string>
+    <string name="forgot_passoword">Forgot Passoword ?</string>
+    <string name="forgetpswdDes">Enter your mobile number &amp; we will send you a reset code to reset your password</string>
+    <string name="send">Send</string>
+    <string name="IndianNumberCode">+91</string>
+    <string name="resetCodeTitle">Enter 6-digit reset code</string>
+    <string name="resetCodeDes">The reset code was send to your mobile number. Please enter the reset code</string>
+    <string name="newPswdTitle">Enter your new password</string>
+    <string name="log_out">Log Out</string>
+
+</resources>
+
+

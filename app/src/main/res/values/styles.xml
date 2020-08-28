@@ -1,0 +1,134 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryDark">@color/blue</item>
+        <item name="colorAccent">@color/lightblue</item>
+        <item name="colorControlHighlight">@color/colorPrimaryRipple</item>
+        <item name="android:textColorPrimary">@color/colorWhite</item>
+    </style>
+
+    <style name="BottomNavTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorBlue</item>
+        <item name="colorPrimaryDark">@color/colorLightBlue</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorPrimaryRipple</item>
+        <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView.Colored</item>
+    </style>
+
+    <style name="SignUplayoutTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorBlue</item>
+        <item name="colorPrimaryDark">@color/colorLightBlue</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorPrimaryRipple</item>
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+
+    </style>
+    <style name="ServiceCallButtonStyle" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:layout_width">@dimen/_35sdp</item>
+        <item name="android:layout_height">@dimen/_35sdp</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:src">@drawable/call_btn</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:layout_marginRight">@dimen/_10sdp</item>
+        <item name="colorControlHighlight">@color/colorPrimaryRipple</item>
+    </style>
+
+    <style name="ServiceImageViewStyle" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:layout_width">@dimen/_35sdp</item>
+        <item name="android:layout_height">@dimen/_35sdp</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:src">@drawable/call_btn</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:layout_marginLeft">@dimen/_10sdp</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="colorControlHighlight">@color/colorPrimaryRipple</item>
+    </style>
+
+
+    <style name="LoginTheme" parent="Theme.MaterialComponents.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorBlue</item>
+        <item name="colorPrimaryDark">@color/colorLightBlue</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="TabbedTheme" parent="TabbedTheme.Base"></style>
+    <style name="TabbedTheme.Base" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorBlue</item>
+        <item name="colorPrimaryDark">@color/colorLightBlue</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="GalleyTheme" parent="GalleyTheme.Base"></style>
+    <style name="GalleyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorBlue</item>
+        <item name="colorPrimaryDark">@color/colorLightBlue</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionMenuTextColor">@color/colorWhite</item>
+    </style>
+
+    <style name="NoActionBar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryDark">@color/blue</item>
+        <item name="colorAccent">@color/lightblue</item>
+    </style>
+
+    <!--SPLASH SCREEN THEME-->
+
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorBlue</item>
+        <item name="colorPrimaryDark">@color/colorLightBlue</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
+    <!--MATERAIL NO ACTIONBAR-->
+    <style name="MaterialNoActionTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorBlue</item>
+        <item name="colorPrimaryDark">@color/colorLightBlue</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+
+    <!--COMMENT ACTIVITY -->
+<!--    <style name="NoActionBar" parent="NoActionBar.Base">-->
+<!--        <item name="android:actionBarStyle">@style/NoActionBar.Base</item>-->
+<!--        <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>-->
+<!--    </style>-->
+<!--    -->
+<!--    <style name="MyActionBarTitleText"-->
+<!--        parent="@style/">-->
+<!--        <item name="android:textColor">@color/actionbar_text</item>-->
+<!--    </style>-->
+
+
+<!--    <style name="NoActionBar.Base" parent="Theme.AppCompat.Light.DarkActionBar">-->
+<!--            <item name="windowActionBar">false</item>-->
+<!--            <item name="windowNoTitle">true</item>-->
+<!--            <item name="colorPrimary">@color/blue</item>-->
+<!--            <item name="colorPrimaryDark">@color/blue</item>-->
+<!--            <item name="colorAccent">@color/lightblue</item>-->
+<!--            <item name="android:textColor">@color/colorWhite</item>-->
+<!--        </style>-->
+
+
+        <!--COMMENT ACTIVITY -->
+
+</resources>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        style="@style/NoActionBar"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        </com.google.android.material.appbar.AppBarLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="6dp"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="Add Post"
+            app:titleTextColor="@color/colorWhite" />
+
+        <RelativeLayout
+            android:id="@+id/relAddPostLay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="220dp" />
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/circleIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/view_pager"
+                android:layout_centerHorizontal="true"
+                android:padding="16dp" />
+            <TextView
+                android:id="@+id/tvAddPostImages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add More"
+                android:clickable="true"
+                android:layout_below="@id/view_pager"
+                android:layout_alignParentEnd="true"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:textSize="@dimen/_15sdp"
+                android:textColor="@color/colorBlue"
+                android:focusable="true"
+                tools:ignore="HardcodedText" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/addPostImg"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:src="@drawable/ic_add_post_image"
+            android:clickable="true"
+            android:scaleType="fitCenter"
+            android:focusable="true"
+            android:background="@color/dullWhite"
+            android:adjustViewBounds="true"
+            />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+            android:layout_gravity="center"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:imeOptions="actionNext"
+                android:textSize="@dimen/_20sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:textColor="@color/black"
+                android:id="@+id/postTitleAddPost"
+                android:layout_margin="@dimen/_15sdp"
+                android:hint="Post Title"
+                android:background="@color/dullWhite"
+                android:padding="@dimen/_8sdp"
+                android:textAllCaps="false"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:imeOptions="actionNext"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp"
+                android:layout_height="@dimen/_300sdp"
+                android:id="@+id/postDescriptionAddPost"
+                android:gravity="left|top"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:background="@color/dullWhite"
+                android:hint="Post Discription"
+                android:padding="@dimen/_8sdp"
+                android:inputType="text"
+                android:textAllCaps="false"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Post"
+            android:id="@+id/addpostActivitybtn"
+            android:layout_gravity="right"
+            android:layout_margin="@dimen/_10sdp"/>
+    </LinearLayout>
+</ScrollView>

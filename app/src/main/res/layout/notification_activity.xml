@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/notification"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".notification.Notification"
+    android:background="@color/Gray100">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/notice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:padding="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/notice_subject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subject"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/notice_by"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_subject"
+                    android:layout_marginBottom="-34dp"
+                    android:text="@string/posted_by"
+                    android:textSize="@dimen/_12sdp" />
+
+                <Button
+                    android:id="@+id/notice_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_alignBottom="@id/notice_by"
+                    android:layout_marginStart="@dimen/_100sdp"
+                    android:layout_marginBottom="-65dp"
+                    android:background="@color/design_default_color_primary"
+                    android:text="@string/details"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"
+
+                    />
+
+                <Button
+                    android:id="@+id/notice_comments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_alignBottom="@id/notice_by"
+                    android:layout_marginStart="@dimen/_180sdp"
+                    android:layout_marginBottom="-65dp"
+                    android:background="@color/design_default_color_primary"
+                    android:text="@string/comments"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_10sdp"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/notice1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:padding="@dimen/_8sdp">
+
+                <TextView
+                    android:id="@+id/notice_subject1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subject"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/notice_by1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_subject1"
+                    android:layout_marginBottom="-34dp"
+                    android:text="@string/posted_by"
+                    android:textSize="@dimen/_12sdp" />
+                <Button
+                    android:id="@+id/notice_details1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_alignBottom="@id/notice_by1"
+                    android:layout_marginStart="@dimen/_100sdp"
+                    android:layout_marginBottom="-65dp"
+                    android:text="@string/details"
+                    android:textSize="@dimen/_10sdp"
+                    android:background="@color/design_default_color_primary"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"
+                    />
+
+                <Button
+                    android:id="@+id/notice_comments1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_alignBottom="@id/notice_by1"
+                    android:layout_marginStart="@dimen/_180sdp"
+                    android:layout_marginBottom="-65dp"
+                    android:text="@string/comments"
+                    android:textSize="@dimen/_10sdp"
+                    android:background="@color/design_default_color_primary"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/notice2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:padding="@dimen/_8sdp">
+
+                <TextView
+                    android:id="@+id/notice_subject2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subject"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/notice_by2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_subject2"
+                    android:layout_marginBottom="-34dp"
+                    android:text="@string/posted_by"
+                    android:textSize="@dimen/_12sdp" />
+                <Button
+                    android:id="@+id/notice_details2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_alignBottom="@id/notice_by2"
+                    android:layout_marginStart="@dimen/_100sdp"
+                    android:layout_marginBottom="-65dp"
+                    android:text="@string/details"
+                    android:textSize="@dimen/_10sdp"
+                    android:background="@color/design_default_color_primary"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"/>
+
+                <Button
+                    android:id="@+id/notice_comments2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_alignBottom="@id/notice_by2"
+                    android:layout_marginStart="@dimen/_180sdp"
+                    android:layout_marginBottom="-65dp"
+                    android:text="@string/comments"
+                    android:textSize="@dimen/_10sdp"
+                    android:background="@color/design_default_color_primary"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/notice3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:padding="@dimen/_8sdp">
+
+                <TextView
+                    android:id="@+id/notice_subject3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subject"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/notice_by3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_subject3"
+                    android:layout_marginBottom="-34dp"
+                    android:text="@string/posted_by"
+                    android:textSize="@dimen/_12sdp" />
+                <Button
+                    android:id="@+id/notice_details3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_alignBottom="@id/notice_by3"
+                    android:layout_marginStart="@dimen/_100sdp"
+                    android:layout_marginBottom="-65dp"
+                    android:text="@string/details"
+                    android:textSize="@dimen/_10sdp"
+                    android:background="@color/design_default_color_primary"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"/>
+
+                <Button
+                    android:id="@+id/notice_comments3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_alignBottom="@id/notice_by3"
+                    android:layout_marginStart="@dimen/_180sdp"
+                    android:layout_marginBottom="-65dp"
+                    android:text="@string/comments"
+                    android:textSize="@dimen/_10sdp"
+                    android:background="@color/design_default_color_primary"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/notice4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_120sdp"
+                android:padding="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/notice_subject4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/subject"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/notice_by4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/notice_subject4"
+                    android:layout_marginBottom="-34dp"
+                    android:text="@string/posted_by"
+                    android:textSize="@dimen/_12sdp" />
+                <Button
+                    android:id="@+id/notice_details4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_alignBottom="@id/notice_by4"
+                    android:layout_marginStart="@dimen/_100sdp"
+                    android:layout_marginBottom="-65dp"
+                    android:text="@string/details"
+                    android:textSize="@dimen/_10sdp"
+                    android:background="@color/design_default_color_primary"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"/>
+
+                <Button
+                    android:id="@+id/notice_comments4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_alignBottom="@id/notice_by4"
+                    android:layout_marginStart="@dimen/_180sdp"
+                    android:layout_marginBottom="-65dp"
+                    android:text="@string/comments"
+                    android:textSize="@dimen/_10sdp"
+                    android:background="@color/design_default_color_primary"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:paddingLeft="@dimen/_14sdp"
+                    android:paddingRight="@dimen/_14sdp"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

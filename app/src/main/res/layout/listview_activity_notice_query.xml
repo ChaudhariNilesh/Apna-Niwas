@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lsv_rel_notice_query">
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/relLayout1">-->
+
+<!--            <androidx.appcompat.widget.Toolbar-->
+<!--                android:id="@+id/NoticeQueryToolbar"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="?attr/colorPrimary"-->
+<!--                android:minHeight="?attr/actionBarSize"-->
+<!--                app:theme="@style/ThemeOverlay.AppCompat.Dark" />-->
+
+
+<!--&lt;!&ndash;        <include layout="@layout/notice_query_toolbar" />&ndash;&gt;-->
+
+<!--    </RelativeLayout>-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/relLayout2"
+        android:layout_below="@+id/relLayout1"
+        android:layout_marginBottom="60dp">
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+           >
+
+        </ListView>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/relLayout3"
+        android:layout_alignParentBottom="true">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/et_NQProfileImage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_6sdp"
+            android:src="@drawable/exampleperson"
+            app:civ_border_color="#BDBDC4"
+            app:civ_border_width="2dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:layout_toRightOf="@id/et_NQProfileImage"
+            android:background="@null"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="@dimen/_11sdp"
+            android:layout_centerVertical="true"
+            android:hint="Ask as User.."
+            android:textSize="16sp"
+            android:id="@+id/et_query"
+            android:scrollbars="vertical"
+            android:textColor="@color/colorBlack"/>
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/PostQry"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/_6sdp"
+            android:text="ASK"
+            android:gravity="center"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/_10sdp"
+            android:clickable="true"
+            android:onClick="NoticeQueries"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
