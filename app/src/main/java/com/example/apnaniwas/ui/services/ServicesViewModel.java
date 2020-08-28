@@ -36,7 +36,7 @@ public class ServicesViewModel {
         this.mServiceImg = mServiceImg;
     }
 
-    Integer getmServiceNum() {
+    public Integer getmServiceNum() {
         return mServiceNum;
     }
 

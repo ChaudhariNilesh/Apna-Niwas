@@ -1,6 +1,7 @@
 package com.example.apnaniwas.ui.services;
 
 import android.content.Context;
+import android.telecom.Call;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +15,15 @@ import com.example.apnaniwas.R;
 import java.util.ArrayList;
 
 
-public class ServicesFragmentAdapter extends RecyclerView.Adapter<ServicesFragmentAdapter.ViewHolder> {
-
+public class ServicesFragmentAdapter extends RecyclerView.Adapter<ServicesFragmentAdapter.ViewHolder> implements View.OnClickListener {
     private ArrayList<ServicesViewModel> mServiceList;
     private Context context;
-
-    public ServicesFragmentAdapter(Context context, ArrayList<ServicesViewModel> mServiceList) {
+    private CallClickEvent callClickEvent;
+    ServicesViewModel data;
+    public ServicesFragmentAdapter(Context context, ArrayList<ServicesViewModel> mServiceList, CallClickEvent callClickEvent) {
         this.context = context;
         this.mServiceList = mServiceList;
-
+        this.callClickEvent=callClickEvent;
     }
 
     @NonNull
@@ -36,7 +37,7 @@ public class ServicesFragmentAdapter extends RecyclerView.Adapter<ServicesFragme
 
     @Override
     public void onBindViewHolder(@NonNull final ServicesFragmentAdapter.ViewHolder holder, final int position) {
-        final ServicesViewModel data = mServiceList.get(position);
+        data = mServiceList.get(position);
 
         final TextView mServiceTitle = holder.mServiceTitle;
         final ImageButton mServiceNum = holder.mServiceNum;
@@ -45,7 +46,7 @@ public class ServicesFragmentAdapter extends RecyclerView.Adapter<ServicesFragme
         mServiceTitle.setText(mServiceList.get(position).getmServiceName());
         mServiceNum.setImageResource(mServiceList.get(position).getmServiceNum());
         mServiceImg.setImageResource(mServiceList.get(position).getmServiceImg());
-
+        mServiceNum.setOnClickListener(this);
 /*        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +65,11 @@ public class ServicesFragmentAdapter extends RecyclerView.Adapter<ServicesFragme
         return mServiceList.size();
     }
 
+    @Override
+    public void onClick(View v) {
+        callClickEvent.numberToPhone(data.getmServiceNum());
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView mServiceTitle;
         ImageButton mServiceNum;
@@ -76,5 +82,8 @@ public class ServicesFragmentAdapter extends RecyclerView.Adapter<ServicesFragme
             this.mServiceImg = itemView.findViewById(R.id.imServiceImg);
 
         }
+    }
+    public interface CallClickEvent{
+        void numberToPhone(int number);
     }
 }

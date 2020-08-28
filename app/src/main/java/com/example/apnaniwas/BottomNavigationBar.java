@@ -1,13 +1,21 @@
 package com.example.apnaniwas;
 
+import android.Manifest;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
+
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 
 
 public class BottomNavigationBar extends AppCompatActivity {
@@ -17,7 +25,10 @@ public class BottomNavigationBar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation);
         navView = findViewById(R.id.nav_view);
-
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)!=PERMISSION_GRANTED){
+            String[] permission = {Manifest.permission.CALL_PHONE};
+            ActivityCompat.requestPermissions(this,permission,1);
+        }
        // BadgeDrawable badge = navView.getOrCreateBadge(R.id.navigation_payment);
 
 /*
@@ -55,6 +66,18 @@ public class BottomNavigationBar extends AppCompatActivity {
 
 
 
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(grantResults[0]==PERMISSION_GRANTED)
+        {
+
+        }
+        else
+        {
+            Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+        }
     }
 }
 
