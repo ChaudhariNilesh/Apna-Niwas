@@ -5,7 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="HardcodedText,Autofill,TextFields" >
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Sign Up"
+        android:textColor="@color/blue"
+        android:textSize="@dimen/_30sdp"
+        android:textStyle="bold"
+        />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,16 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:text="Sign Up"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/_30sdp"
-                android:textStyle="bold"
-                />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
