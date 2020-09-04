@@ -36,6 +36,7 @@ public class AddDetailsActivity extends AppCompatActivity {
     final String MYPREFS="DETAILS";
     final String FLATNO="FLATNO";
     final String BLOCK ="BLOCK";
+    final String TOTALMEMBERS ="TOTALMEMBERS";
     final String MEM1NAME="MEM1NAME";
     final String MEM2NAME="MEM2NAME";
     final String MEM3NAME="MEM3NAME";
@@ -101,7 +102,40 @@ public class AddDetailsActivity extends AppCompatActivity {
                 {
                     int nom= Integer.parseInt(noofmembers);
                     totalmembers=nom;
-                    if(nom==1)
+                    if(nom==0)
+                    {
+                        mem1.setVisibility(View.INVISIBLE);
+                        mem1name.setVisibility(View.INVISIBLE);
+                        mem1relation.setVisibility(View.INVISIBLE);
+                        mem1name.setEnabled(false);
+                        mem1relation.setEnabled(false);
+                        mem2.setVisibility(View.INVISIBLE);
+                        mem2name.setVisibility(View.INVISIBLE);
+                        mem2relation.setVisibility(View.INVISIBLE);
+                        mem2name.setEnabled(false);
+                        mem2relation.setEnabled(false);
+                        mem3.setVisibility(View.INVISIBLE);
+                        mem3name.setVisibility(View.INVISIBLE);
+                        mem3relation.setVisibility(View.INVISIBLE);
+                        mem3name.setEnabled(false);
+                        mem3relation.setEnabled(false);
+                        mem4.setVisibility(View.INVISIBLE);
+                        mem4name.setVisibility(View.INVISIBLE);
+                        mem4relation.setVisibility(View.INVISIBLE);
+                        mem4name.setEnabled(false);
+                        mem4relation.setEnabled(false);
+                        mem5.setVisibility(View.INVISIBLE);
+                        mem5name.setVisibility(View.INVISIBLE);
+                        mem5relation.setVisibility(View.INVISIBLE);
+                        mem5name.setEnabled(false);
+                        mem5relation.setEnabled(false);
+                        mem6.setVisibility(View.INVISIBLE);
+                        mem6name.setVisibility(View.INVISIBLE);
+                        mem6relation.setVisibility(View.INVISIBLE);
+                        mem6name.setEnabled(false);
+                        mem6relation.setEnabled(false);
+                    }
+                    else if(nom==1)
                     {
                         mem1.setVisibility(View.VISIBLE);
                         mem1name.setVisibility(View.VISIBLE);
@@ -333,9 +367,11 @@ public class AddDetailsActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = sharedpreferences.edit();
             String fno=flatno.getText().toString();
             String blk=block.getText().toString();
+            int tot=Integer.parseInt(noofmem.getText().toString());
             if(!fno.isEmpty() && !blk.isEmpty()) {
                 editor.putString(FLATNO, fno);
                 editor.putString(BLOCK, blk);
+                editor.putInt(TOTALMEMBERS, tot);
                 if(totalmembers<=6)
                 {
                     editor.putString(MEM6NAME, mem6name.getText().toString());
