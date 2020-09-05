@@ -49,7 +49,7 @@ public class ServicesFragment extends Fragment implements ServicesFragmentAdapte
             servicesDataList.add(new ServicesViewModel(
                     ServicesFragment.services.mServiceName[i],
                     ServicesFragment.services.mServiceNum,
-                    ServicesFragment.services.mServiceImg,
+                    ServicesFragment.services.mServiceImg[i],
                     ServicesFragment.services.id[i]
             ));
         }
@@ -72,10 +72,10 @@ public class ServicesFragment extends Fragment implements ServicesFragmentAdapte
 
     public static class services{
         static String[] mServiceName = {"Plumber Service","Electrician Service","Security Service","Gas Service",
-                "Garbage Service","Complain","Gas Service","Garbage Service","Complain Service"};
+                "Garbage Service","Complain"};
         static Integer mServiceNum = R.drawable.blue_call;
-        static Integer mServiceImg = R.drawable.circle_image;
-        static Integer[] id ={0,1,2,3,4,5,6,7,8};
+        static Integer[] mServiceImg = {R.drawable.ic_service_plumber_foreground,R.drawable.ic_service_electrician_foreground,R.drawable.ic_service_security_foreground,R.drawable.ic_service_gas_foreground,R.drawable.ic_service_garbage_foreground,R.drawable.ic_service_complain_foreground};
+        static Integer[] id ={0,1,2,3,4,5};
     }
 
 

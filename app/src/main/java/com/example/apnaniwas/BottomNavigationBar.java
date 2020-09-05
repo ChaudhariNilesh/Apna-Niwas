@@ -1,9 +1,11 @@
 package com.example.apnaniwas;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.apnaniwas.chat.ActivityChatModule;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -24,6 +26,12 @@ public class BottomNavigationBar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation);
+
+        //temp code by nikul
+        Intent chatintennt = new Intent(this, ActivityChatModule.class);
+        startActivity(chatintennt);
+
+
         navView = findViewById(R.id.nav_view);
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)!=PERMISSION_GRANTED){
             String[] permission = {Manifest.permission.CALL_PHONE};

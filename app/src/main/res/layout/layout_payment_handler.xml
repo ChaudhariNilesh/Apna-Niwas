@@ -134,7 +134,7 @@
                         <ImageView
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
-                            android:background="@drawable/family_background"/>
+                            android:background="@drawable/ic_payment_paypal_foreground"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -163,7 +163,7 @@
                         <ImageView
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
-                            android:background="@drawable/family_background"/>
+                            android:background="@drawable/ic_payment_visa_foreground"/>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -192,7 +192,7 @@
                         <ImageView
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
-                            android:background="@drawable/family_background"/>
+                            android:background="@drawable/ic_payment_add_card_foreground"/>
 
                         <TextView
                             android:layout_width="wrap_content"
