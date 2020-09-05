@@ -11,13 +11,14 @@ public class YourPostViewModel implements Parcelable {
 
     private String imgTitle;
     private String imgUrl;
-
+    private String  post_id;
     public YourPostViewModel() {
     }
 
     protected YourPostViewModel(Parcel in){
         this.imgTitle = in.readString();
         this.imgUrl = in.readString();
+        this.post_id = in.readString();
 
     }
 
@@ -56,6 +57,14 @@ public class YourPostViewModel implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(imgTitle);
         dest.writeString(imgUrl);
+        dest.writeString(post_id);
     }
 
+    public void setPostId(String post_id) {
+        this.post_id = post_id;
+    }
+
+    public String getPostId() {
+        return post_id;
+    }
 }

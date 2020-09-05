@@ -2,6 +2,7 @@ package com.example.apnaniwas.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -23,6 +24,7 @@ import com.example.apnaniwas.apnaniwasDB.model.loginresponse.LoginResponse;
 import com.example.apnaniwas.BottomNavigationBar;
 import com.example.apnaniwas.R;
 import com.example.apnaniwas.signup.MobileRegistration;
+import com.example.apnaniwas.util.FirebaseTokenPref;
 import com.example.apnaniwas.util.SharedPreference;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
@@ -42,7 +44,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Te
     private CompositeDisposable disposable = new CompositeDisposable();
     String mLoginId, mPassword;
     private EditText etLoginId, etPassword;
-
+    private ProgressDialog progressDialog;
+    private  String deviceToken="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +77,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Te
     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
         if(actionId == EditorInfo.IME_ACTION_DONE)
         {
-            login();
+            login(deviceToken);
             return true;
         }
         return false;
@@ -83,7 +86,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Te
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnLogin) {
-            login();
+            if(sentTokenToServer()){
+                login(deviceToken);
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "Failed to register device.", Toast.LENGTH_LONG).show();
+            }
+
         }
         else if(v.getId() == R.id.tvClickSignUp){
             startActivity(new Intent(Login.this, MobileRegistration.class));
@@ -94,7 +103,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Te
         }
     }
 
-    private void login() {
+    private void login(String deviceToken) {
         setError();
         mLoginId = Objects.requireNonNull(etLoginId.getText()).toString().trim();
         mPassword = Objects.requireNonNull(etPassword.getText()).toString().trim();
@@ -111,17 +120,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Te
             etLoginId.requestFocus();
         }
         if (!err) {
-            auth_loginDetails(mLoginId,mPassword);
+            auth_loginDetails(mLoginId,mPassword,deviceToken);
           //  mProgressBar.setVisibility(View.VISIBLE);
         } else {
             showSnackBarMessage("Enter Valid Details !");
         }
     }
 
-    private void auth_loginDetails(String mem_LoginId, String mem_Password) {
+    private void auth_loginDetails(String mem_LoginId, String mem_Password, String deviceToken) {
 
         disposable.add(
-                apiService.authLogin("verify_login", mem_LoginId, mem_Password)
+                apiService.authLogin("verify_login", mem_LoginId, mem_Password,deviceToken)
                         .subscribeOn(io.reactivex.schedulers.Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(this::handleSuccess, this::handleError));
@@ -171,7 +180,20 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Te
         }
 
     }
+    private boolean sentTokenToServer() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Registering Device...");
+        progressDialog.show();
 
+        deviceToken = FirebaseTokenPref.getInstance(getApplicationContext()).getDeviceToken();
+
+        if (deviceToken == null) {
+            progressDialog.dismiss();
+            //     Toast.makeText(this, "Token not generated.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
     private void showSnackBarMessage(String message) {
         View parentLayout = findViewById(R.id.LayLoginParent);
         if (parentLayout != null) {

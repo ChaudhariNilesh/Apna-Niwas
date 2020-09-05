@@ -1,3 +1,4 @@
+/*
 package com.example.apnaniwas.notification;
 
 public class NotificationViewModel {
@@ -35,3 +36,4 @@ public class NotificationViewModel {
         return imgNoticeQry;
     }
 }
+*/

@@ -27,9 +27,9 @@ public class BottomNavigationBar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation);
 
-        //temp code by nikul
+/*        //temp code by nikul
         Intent chatintennt = new Intent(this, ActivityChatModule.class);
-        startActivity(chatintennt);
+        startActivity(chatintennt);*/
 
 
         navView = findViewById(R.id.nav_view);

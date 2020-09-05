@@ -1,5 +1,6 @@
 package com.example.apnaniwas.chat;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apnaniwas.R;
+import com.example.apnaniwas.apnaniwasDB.model.signupresponse.MemberModel;
+import com.example.apnaniwas.util.SharedPreference;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,15 +23,22 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     private List<Message> chatList;
     ViewGroup parent;
+    private Context context;
+    MemberModel user;
+    private int member_id;
 
-    public ChatAdapter(List<Message> chatList) {
+    public ChatAdapter(List<Message> chatList, ActivityChatModule activityChatModule) {
         this.chatList = chatList;
+        this.context = activityChatModule;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_my_message,parent,false);
+        user = SharedPreference.getInstance(context).getMember();
+        member_id = Integer.parseInt(user.getMemberId());
+        member_id = Integer.valueOf(member_id);
         return new ViewHolder(itemView);
     }
 
@@ -45,7 +55,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         RelativeLayout.LayoutParams lpTime = (RelativeLayout.LayoutParams) holder.time.getLayoutParams();
         RelativeLayout.LayoutParams lpMsgMeta = (RelativeLayout.LayoutParams) holder.msgMeta.getLayoutParams();
 
-        if(messages.getName().equals("Nikul")) {
+        if(messages.getId() == member_id) {
             lpMsgMeta.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
             lpMessage.width = ViewGroup.LayoutParams.WRAP_CONTENT;
             lpMessage.height = ViewGroup.LayoutParams.WRAP_CONTENT;

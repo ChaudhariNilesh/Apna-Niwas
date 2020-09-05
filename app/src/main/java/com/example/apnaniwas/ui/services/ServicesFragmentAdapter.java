@@ -1,7 +1,13 @@
 package com.example.apnaniwas.ui.services;
 
+import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.telecom.Call;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,20 +16,25 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.apnaniwas.R;
+
 import java.util.ArrayList;
 
 
-public class ServicesFragmentAdapter extends RecyclerView.Adapter<ServicesFragmentAdapter.ViewHolder> implements View.OnClickListener {
+public class ServicesFragmentAdapter extends RecyclerView.Adapter<ServicesFragmentAdapter.ViewHolder> {
     private ArrayList<ServicesViewModel> mServiceList;
     private Context context;
-    private CallClickEvent callClickEvent;
+    //  private CallClickEvent callClickEvent;
     ServicesViewModel data;
-    public ServicesFragmentAdapter(Context context, ArrayList<ServicesViewModel> mServiceList, CallClickEvent callClickEvent) {
+    ArrayList<ServiceContactModel> contactData;
+
+    public ServicesFragmentAdapter(Context context, ArrayList<ServicesViewModel> mServiceList, ArrayList<ServiceContactModel> serviceContactData) {
         this.context = context;
         this.mServiceList = mServiceList;
-        this.callClickEvent=callClickEvent;
+        this.contactData = serviceContactData;
     }
 
     @NonNull
@@ -46,29 +57,24 @@ public class ServicesFragmentAdapter extends RecyclerView.Adapter<ServicesFragme
         mServiceTitle.setText(mServiceList.get(position).getmServiceName());
         mServiceNum.setImageResource(mServiceList.get(position).getmServiceNum());
         mServiceImg.setImageResource(mServiceList.get(position).getmServiceImg());
-        mServiceNum.setOnClickListener(this);
-/*        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        mServiceNum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Toast.makeText(v.getContext(),"CLCIKED "+position,Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(context, PaymentHandler.class);
-                intent.putExtra("BILL", new String[] {getCurrentDate(),pendBill.get(position).getTitle()});
-                context.startActivity(intent);
-
+                numberToPhone(contactData.get(position).service_contact_no);
             }
-        });*/
-
+        });
     }
+
+
     @Override
     public int getItemCount() {
         return mServiceList.size();
     }
 
-    @Override
+/*    @Override
     public void onClick(View v) {
-        callClickEvent.numberToPhone(data.getmServiceNum());
-    }
+        callClickEvent.numberToPhone(contactData.get(postion));
+    }*/
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView mServiceTitle;
@@ -83,7 +89,28 @@ public class ServicesFragmentAdapter extends RecyclerView.Adapter<ServicesFragme
 
         }
     }
-    public interface CallClickEvent{
+/*    public interface CallClickEvent{
         void numberToPhone(int number);
+    }*/
+
+
+    public void numberToPhone(String number) {
+        try {
+            Intent callIntent = new Intent(Intent.ACTION_CALL);
+            callIntent.setData(Uri.parse("tel:" + number)); //change this with number
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            context.startActivity(callIntent);
+        } catch (ActivityNotFoundException activityException) {
+            Log.e("Calling a Phone Number", "Call failed", activityException);
+        }
     }
 }

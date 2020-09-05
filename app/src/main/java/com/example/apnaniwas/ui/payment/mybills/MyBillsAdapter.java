@@ -53,9 +53,6 @@ public class MyBillsAdapter extends RecyclerView.Adapter<MyBillsAdapter.ViewHold
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(v.getContext(),"CLCIKED "+position,Toast.LENGTH_LONG).show();
-
-
                 Intent intent = new Intent(context,PaymentHandler.class);
                 Bundle extras = new Bundle();
                 extras.putString("EXTRA_BILLTILE",pendBill.get(position).getTitle());

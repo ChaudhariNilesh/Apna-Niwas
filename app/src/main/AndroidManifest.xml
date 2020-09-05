@@ -23,26 +23,38 @@
 
         </activity>
 
+        <activity
+            android:name=".AddDetailsActivity"
+            android:theme="@style/NoActionBar">
+
+        </activity>
+
         <activity android:name=".login.Login" android:theme="@style/NoActionBar">
 
         </activity>
 
         <activity android:name=".BottomNavigationBar" android:theme="@style/BottomNavTheme">
-            <intent-filter>
-
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>
-
 
         </activity>
 
         <activity
             android:name=".notification.NotificationBoard"
-            android:label="@string/notice_title" />
+            android:label="@string/notice_title">
+            <intent-filter>
+                <action android:name="SHOW_DETAILS"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
 
-        <activity android:name=".notification.noticequeries.NoticeQueries" />
+        <service
+            android:name=".notification.FCM.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!--<activity android:name=".notification.noticequeries.NoticeQueries" />-->
 
         <activity
             android:name=".ui.payment.mybills.PaymentHandler"
@@ -55,6 +67,12 @@
         </activity>
 
         <activity android:name=".SplashActivity" android:theme="@style/SplashTheme">
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
 
         </activity>
         <activity android:name=".signup.MobileRegistration"
@@ -69,6 +87,11 @@
         </activity>
         <activity android:name=".login.NewPassword" android:theme="@style/NoActionBar"/>
         <activity android:name=".ui.yourpost.DetailActivity" />
+        <activity android:name=".ui.profile.ChangePassword"  android:theme="@style/NoActionBar"/>
+
+        <activity android:name=".chat.ActivityChatModule"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
 
     </application>
 

@@ -73,6 +73,8 @@
     <string name="resetCodeDes">The reset code was send to your mobile number. Please enter the reset code</string>
     <string name="newPswdTitle">Enter your new password</string>
     <string name="log_out">Log Out</string>
+    <string name="more_information">More Information</string>
+    <string name="query_about_notice">Query About Notice</string>
 
 </resources>
 

@@ -47,5 +47,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
+        android:background="@color/darkblue"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_baseline_message_white"
         />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

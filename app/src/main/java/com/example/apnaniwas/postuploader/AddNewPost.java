@@ -27,6 +27,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.apnaniwas.BottomNavigationBar;
 import com.example.apnaniwas.R;
 import com.example.apnaniwas.apnaniwasDB.connection.APIService;
 import com.example.apnaniwas.apnaniwasDB.connection.RestClient;
@@ -100,7 +101,7 @@ public class AddNewPost extends AppCompatActivity implements View.OnClickListene
             String member_id = user.getMemberId();
             Usrupload(postTitle,postDescription,member_id);
             newPost.add(new HomePostModel(R.drawable.gradient_background, postTitle, postDescription));
-            finish();
+           // finish();
         } else if (v.getId() == R.id.tvAddPostImages) {
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
             {
@@ -197,7 +198,7 @@ public class AddNewPost extends AppCompatActivity implements View.OnClickListene
             // create part for file (photo, video, ...)
             for (int i = 0; i < arrayList.size(); i++) {
                 parts.add(prepareFilePart("image"+i, arrayList.get(i)));
-                Log.w("RESULT :: >> ", String.valueOf(parts.get(i)));
+                Log.e("RESULT :: >> ", String.valueOf(parts.get(i)));
 
             }
         }
@@ -224,18 +225,22 @@ public class AddNewPost extends AppCompatActivity implements View.OnClickListene
         hideProgress();
         if(commonResponse.getStatus() == 200)
         {
+            hideProgress();
             Toast.makeText(this,"Uploaded",Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, BottomNavigationBar.class));
+
         }
         else
         {
-            Toast.makeText(this,commonResponse.getMesssage(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Failed to upload try agian.",Toast.LENGTH_SHORT).show();
         }
 
     }
 
     private void handleError(Throwable error) {
 
-        Log.e("FETCH ERROR  ", "onError: " + error.getMessage());
+        hideProgress();
+        Log.e ("FETCH ERROR  ", "onError: " + error.getMessage());
 
     }
     @NonNull

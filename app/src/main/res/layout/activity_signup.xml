@@ -47,7 +47,7 @@
                 android:paddingRight="@dimen/_15sdp"
                 android:textSize="@dimen/_12sdp"
                 android:singleLine="true"
-                android:maxLength="10"
+                android:maxLength="30"
                 />
 
             <TextView
@@ -72,7 +72,7 @@
                 android:paddingRight="@dimen/_15sdp"
                 android:textSize="@dimen/_12sdp"
                 android:singleLine="true"
-                android:maxLength="10"/>
+                android:maxLength="30"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -96,7 +96,7 @@
                 android:paddingRight="@dimen/_15sdp"
                 android:textSize="@dimen/_12sdp"
                 android:singleLine="true"
-                android:maxLength="10"/>
+                android:maxLength="64"/>
 
             <TextView
                 android:layout_width="match_parent"

@@ -19,7 +19,9 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.apnaniwas.R;
+import com.example.apnaniwas.apnaniwasDB.model.signupresponse.MemberModel;
 import com.example.apnaniwas.login.Login;
+import com.example.apnaniwas.util.SharedPreference;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -42,14 +44,15 @@ public class ActivityChatModule extends AppCompatActivity {
     DatabaseReference dbReff;
     //private String mChatUser;
     private String mCurrentUserId;
-
     EditText msg;
     ImageButton btnSend;
+    private MemberModel user;
     int increId = 101;
 
     private  final List<Message> ChatList = new ArrayList<>();
     private RecyclerView recyclerView;
     private ChatAdapter chatAdapter;
+    private int member_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +64,11 @@ public class ActivityChatModule extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         dbReff = FirebaseDatabase.getInstance().getReference();
         //mCurrentUserId = mAuth.getCurrentUser().getUid();
+        user = SharedPreference.getInstance(getApplicationContext()).getMember();
+        member_id = Integer.parseInt(user.getMemberId());
+        member_id = Integer.valueOf(member_id);
 
+        //Log.e("FIREBASE ",member_id);
         btnSend = findViewById(R.id.btn_send_msg);
         msg = findViewById(R.id.edit_Text);
 
@@ -75,7 +82,7 @@ public class ActivityChatModule extends AppCompatActivity {
         loadMessages();
 
         //Recycler Integration
-        chatAdapter = new ChatAdapter(ChatList);
+        chatAdapter = new ChatAdapter(ChatList,this);
 
         recyclerView = findViewById(R.id.rv_messages);
         //linearLayoutManager = new LinearLayoutManager(this);
@@ -94,6 +101,7 @@ public class ActivityChatModule extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
                 Message newMessage = snapshot.getValue(Message.class);
+
                 ChatList.add(newMessage);
                 chatAdapter.notifyDataSetChanged();
 
@@ -130,8 +138,8 @@ public class ActivityChatModule extends AppCompatActivity {
         if (!TextUtils.isEmpty(curMsg)) {
 
             Map data = new HashMap();
-            data.put("id",increId);
-            data.put("name","Nikul");
+            data.put("id",member_id);
+            data.put("name",user.getMemberName());
             data.put("message", curMsg);
             data.put("time", ServerValue.TIMESTAMP);
 

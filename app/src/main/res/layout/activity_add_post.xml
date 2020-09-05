@@ -95,7 +95,7 @@
 
             <EditText
                 android:layout_width="match_parent"
-                android:imeOptions="actionNext"
+                android:imeOptions="actionUnspecified"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15sdp"
                 android:layout_height="@dimen/_300sdp"

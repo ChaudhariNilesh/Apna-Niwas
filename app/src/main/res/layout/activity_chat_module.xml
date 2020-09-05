@@ -42,7 +42,8 @@
             android:scrollbarStyle="insideOverlay"
             android:scrollbars="vertical"
             android:maxLines="10"
-            android:foregroundGravity="bottom"/>
+            android:foregroundGravity="bottom"
+            android:textColor="@color/colorBlack" />
 
         <ImageButton
             android:id="@+id/btn_send_msg"

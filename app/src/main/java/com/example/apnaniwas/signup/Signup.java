@@ -2,6 +2,7 @@ package com.example.apnaniwas.signup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,19 +12,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.apnaniwas.AddDetailsActivity;
 import com.example.apnaniwas.BottomNavigationBar;
 import com.example.apnaniwas.apnaniwasDB.model.signupresponse.SignResponse;
+import com.example.apnaniwas.login.Login;
+import com.example.apnaniwas.util.FirebaseTokenPref;
 import com.example.apnaniwas.util.SharedPreference;
 import com.example.apnaniwas.apnaniwasDB.connection.APIService;
 import com.example.apnaniwas.apnaniwasDB.connection.RestClient;
-import com.example.apnaniwas.apnaniwasDB.model.signupresponse.MemberModel;
 import com.example.apnaniwas.R;
-import com.example.apnaniwas.tmp.TmpProfile;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableObserver;
-import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class Signup extends AppCompatActivity {
@@ -34,8 +34,8 @@ public class Signup extends AppCompatActivity {
     private String UsrFname,UsrLname ,Usremail,Usrpswd,UsrConfirmPswd,Usrmob;
     private static APIService apiService = RestClient.createService(APIService.class);
     private CompositeDisposable disposable = new CompositeDisposable();
-
-
+    private ProgressDialog progressDialog;
+    private  String deviceToken="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +55,14 @@ public class Signup extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                register(mVerifiedMob);
+                if(sentTokenToServer()){
+                    register(mVerifiedMob,deviceToken);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Failed to register device.", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(getApplicationContext(), Login.class));
+                    finish();
+                }
             }
         });
 
@@ -90,7 +97,7 @@ public class Signup extends AppCompatActivity {
     // For Sending Activity Context public static Signup getContext(){ return instance; }
 
 
-    private void register(String mVerifiedMob) {
+    private void register(String mVerifiedMob, String deviceToken) {
 
 
         UsrFname = Fname.getText().toString().trim();
@@ -127,23 +134,77 @@ public class Signup extends AppCompatActivity {
        // else {
             String Usrname = UsrFname + " "+ UsrLname;
         disposable.add( apiService.addMember("add_member", Usrname, mVerifiedMob, Usremail
-                    , Usrpswd)
+                    , Usrpswd,deviceToken)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableObserver<SignResponse>() {
+                .subscribe(this::handleSuccess, this::handleError)); }
 
-                        @Override
+    private void handleSuccess(SignResponse signResponse) {
+
+        final int  STATUS_CODE = signResponse.getStatus();
+        if(STATUS_CODE == 200)
+        {
+            SharedPreference.getInstance(getApplicationContext()).userRegister(signResponse);
+            SharedPreference.getInstance(getApplicationContext()).setFirstTimeLaunch(true);
+            startActivity(new Intent(getApplicationContext(), AddDetailsActivity.class));
+            finish();
+        }
+        else
+        {
+            Toast.makeText(this,signResponse.getMesssage(),Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void handleError(Throwable e) {
+        Log.e("FETCH ERROR  ", "onError: " + e.getMessage());
+    }
+
+
+    private boolean sentTokenToServer() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Registering Device...");
+        progressDialog.setCancelable(true);
+        progressDialog.show();
+
+       deviceToken = FirebaseTokenPref.getInstance(getApplicationContext()).getDeviceToken();
+
+        if (deviceToken == null) {
+            progressDialog.dismiss();
+       //     Toast.makeText(this, "Token not generated.", Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        disposable.dispose();
+    }
+
+}
+
+//Just old code if above code works fine then delete below one .
+/*    @Override
                         public void onNext(SignResponse signResponse) {
 
-/*                            signResponse.getMemberId();
+*//*                           signResponse.getMemberId();
                             signResponse.getEmailId();
                             signResponse.getMemberPassword();
                             signResponse.getMemberName();
-                            signResponse.getPhoneNo();*/
+                            signResponse.getPhoneNo();*//*
 
 
                             SharedPreference.getInstance(getApplicationContext()).userRegister(signResponse);
                             SharedPreference.getInstance(getApplicationContext()).setFirstTimeLaunch(true);
+
+                            sentTokenToServer();
+
                             startActivity(new Intent(getApplicationContext(), BottomNavigationBar.class));
                             finish();
 
@@ -158,11 +219,4 @@ public class Signup extends AppCompatActivity {
                         public void onComplete() {
                         }
                     }));
-    }
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        this.finish();
-    }
-
-}
+    }*/

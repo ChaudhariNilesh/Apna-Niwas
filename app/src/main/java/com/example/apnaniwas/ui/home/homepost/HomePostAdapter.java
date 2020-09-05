@@ -15,14 +15,15 @@ import com.example.apnaniwas.R;
 import java.util.ArrayList;
 
 public class HomePostAdapter extends RecyclerView.Adapter<HomePostAdapter.MyHolder>{
+    private OnPostItemListener onPostItemListener;
+    private ArrayList<HomePostModel> allposts;
+    private Context context;
+
     public HomePostAdapter(ArrayList<HomePostModel> allposts, Context context, OnPostItemListener onPostItemListener) {
         this.allposts = allposts;
         this.context = context;
         this.onPostItemListener = onPostItemListener;
     }
-    private OnPostItemListener onPostItemListener;
-    private ArrayList<HomePostModel> allposts;
-    private Context context;
 
     public void setAllposts(ArrayList<HomePostModel> allposts) {
         this.allposts = allposts;
@@ -40,7 +41,7 @@ public class HomePostAdapter extends RecyclerView.Adapter<HomePostAdapter.MyHold
     public void onBindViewHolder(@NonNull MyHolder holder, int position){
         holder.postTitle.setText(allposts.get(position).getPostTitle());
         holder.postSummary.setText(allposts.get(position).getPostSummary());
-        holder.postImage.setImageResource(allposts.get(position).getPostImage());
+        holder.postImage.setImageResource(allposts.get(position).getPostGradientImage());
     }
 
 

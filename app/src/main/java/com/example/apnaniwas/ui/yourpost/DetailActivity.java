@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -17,13 +18,21 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.example.apnaniwas.R;
+import com.example.apnaniwas.apnaniwasDB.connection.APIService;
+import com.example.apnaniwas.apnaniwasDB.connection.RestClient;
+import com.example.apnaniwas.apnaniwasDB.model.CommonResponse;
+import com.example.apnaniwas.apnaniwasDB.model.loginresponse.LoginResponse;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+
 public class DetailActivity extends AppCompatActivity {
 
-
+    private static APIService apiService = RestClient.createService(APIService.class);
+    private CompositeDisposable disposable = new CompositeDisposable();
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     public ArrayList<YourPostViewModel> data = new ArrayList<>();
@@ -33,6 +42,7 @@ public class DetailActivity extends AppCompatActivity {
 
 
     private ViewPager mViewPager;
+    private String mPostId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +53,9 @@ public class DetailActivity extends AppCompatActivity {
 
         data = getIntent().getParcelableArrayListExtra("data");
         pos = getIntent().getIntExtra("pos", 0);
+        mPostId = data.get(pos).getPostId();
 
         setTitle(data.get(pos).getImgTitle());
-
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), data);
 
@@ -58,25 +68,20 @@ public class DetailActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
             public void onPageSelected(int position) {
 
                 setTitle(data.get(position).getImgTitle());
-
+                mPostId = data.get(position).getPostId();
             }
-
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
 
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -92,12 +97,34 @@ public class DetailActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_delete_post) {
+            deleteYourPost(mPostId);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void deleteYourPost(String post_id) {
+            disposable.add(
+                    apiService.deletePost("delete_post",post_id)
+                            .subscribeOn(io.reactivex.schedulers.Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(this::handleSuccess, this::handleError));
+    }
+
+    private void handleSuccess(CommonResponse commonResponse) {
+        if (commonResponse.getStatus() == 200) {
+            Toast.makeText(this,commonResponse.getMesssage(),Toast.LENGTH_LONG).show();
+        }
+        else{
+            Toast.makeText(this,"Failed to delete post try again.",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void handleError(Throwable throwable) {
+    }
+
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
         public ArrayList<YourPostViewModel> data = new ArrayList<>();
@@ -172,4 +199,10 @@ public class DetailActivity extends AppCompatActivity {
         }
 
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        disposable.dispose();
+    }
+
 }

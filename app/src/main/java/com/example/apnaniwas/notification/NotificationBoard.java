@@ -1,83 +1,114 @@
 package com.example.apnaniwas.notification;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.apnaniwas.notification.noticequeries.NoticeQueries;
+import com.example.apnaniwas.notification.FCM.Config;
+import com.example.apnaniwas.notification.FCM.MyFirebaseMessagingService;
 import com.example.apnaniwas.R;
+import com.example.apnaniwas.util.NoticePref;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+
+import static com.example.apnaniwas.ui.home.HomeFragment.setupBadge;
 
 
 public class NotificationBoard extends AppCompatActivity {
-private static RecyclerView.Adapter adapter;
-private RecyclerView.LayoutManager layoutManager;
-private  static RecyclerView recyclerView;
-private static ArrayList<NotificationViewModel> data;
 
+    public static View.OnClickListener noticeDelClickListener;
+    private RecyclerView.LayoutManager layoutManager;
+    private static RecyclerView.Adapter adapter;
+    private static RecyclerView recyclerView;
+    private BroadcastReceiver mRegistrationBroadcastReceiver;
+    private static ArrayList<NoticePrefModel> noticePrefArray = new ArrayList<NoticePrefModel>();
+    private ImageButton imgBtnNoticeDel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_layout);
 
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        layoutManager=new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        data=new ArrayList<NotificationViewModel>();
-        for(int i =0; i<notices.id.length;i++)
-        {
-            data.add(new NotificationViewModel(
-                    notices.subjectArray[i],
-                    notices.postedByArray[i],
-                    notices.id[i],
-                    notices.drawableInfo,
-                    notices.drawableNoticeQry
-            ));
-        }
-        adapter=new NotificationBoardAdapter(data);
-        recyclerView.setAdapter(adapter);
-    }
-
-/*    private static class MyOnClickListener implements View.OnClickListener {
-
-        private final Context context;
-
-        private MyOnClickListener(Context context) {
-            this.context = context;
-        }
-
-    //    @Override
-    //    public void onClick(View v) {
-    //        removeItem(v);
-        } // <<*/
-
-    public void notification(View view) {
-        Intent intent = new Intent(this, NoticeQueries.class);
-        startActivity(intent);
-/*        if(view.getId() ==  R.id.ib_notice_details)
-        {
-            loadInfoAlertBox();
-        }
-       if (view.getId() == R.id.ib_NoticeQry) {
-
-        }*/
+        setupBadge(0); //set notification badge
+        populateNoticeData(); // get notice data
+        noticeBroadcastHandler();
     }
 
 
 
-    public static class notices{
-        static String[] subjectArray={"Meeting","Celebration","Fund","Water Supply","Event"};
-        static String[] postedByArray={"Short Description","Short Description","Short Description","Short Description","Short Description"};
-        static Integer drawableNoticeQry =R.drawable.ic_notice_qry;
-        static Integer drawableInfo=R.drawable.ic_info;
-        static Integer[] id ={0,1,2,3,4};
+    public void removeItem(int position) {
+        noticePrefArray.remove(position);
+        adapter.notifyItemRemoved(position);
+    }
+
+    private void noticeBroadcastHandler() {
+        mRegistrationBroadcastReceiver =
+                new BroadcastReceiver() {
+                    @Override
+                    public void onReceive(Context context, Intent intent) {
+                        if (intent.getAction().equals(Config.PUSH_NOTIFICATION)) {
+                            try {
+                                String noticeData = intent.getStringExtra("data");
+                                assert noticeData != null;
+                                JSONObject obj = new JSONObject(noticeData);
+                                populateNoticeData();
+                                Toast.makeText(getApplicationContext(), "New notification is about " + obj.getString("title"), Toast.LENGTH_LONG).show();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "No New Notification", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                };
+
+    }
+
+    private void populateNoticeData() {
+        try {
+            noticePrefArray = NoticePref.getInstance(this).getNoticePref();
+            Collections.sort(noticePrefArray, NoticePrefModel.noticeUUIDcmp);
+            recyclerView = findViewById(R.id.recyclerView);
+            recyclerView.setHasFixedSize(true);
+            layoutManager = new LinearLayoutManager(getApplicationContext());
+            recyclerView.setLayoutManager(layoutManager);
+            adapter = new NotificationBoardAdapter(noticePrefArray, getApplicationContext());
+            recyclerView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+                new IntentFilter(Config.PUSH_NOTIFICATION));
+        MyFirebaseMessagingService.clearNotifications(getApplicationContext());
+        populateNoticeData();
+    }
+    @Override
+    protected void onPause() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
+        super.onPause();
     }
 
 }

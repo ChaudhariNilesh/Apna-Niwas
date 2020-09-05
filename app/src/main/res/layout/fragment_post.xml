@@ -5,8 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="10"
-    tools:context=".PostFragment">
+    android:weightSum="10">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -18,12 +17,15 @@
         app:title="Post"
         app:titleTextColor="@color/colorWhite"
         app:layout_scrollFlags="scroll|enterAlways" />
+
     <ImageView
+        android:id="@+id/insidePostImage"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_100sdp"
         android:layout_weight="5"
         android:src="@color/darkblue"
-        android:id="@+id/insidePostImage"/>
+        android:scaleType="fitXY"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,7 +1,7 @@
 package com.example.apnaniwas.apnaniwasDB.connection;
 
 public class VariableBag {
-    static final String BASE_URL = "http://192.168.0.104/ApnaNiwas/";// "http://192.168.43.34/ApnaNiwas/";  //
+    public static final String BASE_URL = "http://192.168.0.107/ApnaNiwas/";// "http://192.168.43.34/ApnaNiwas/";  //
 
     static final String MEMBER_URL_KEY = "Master@ApnaNiwasDB025764";
 

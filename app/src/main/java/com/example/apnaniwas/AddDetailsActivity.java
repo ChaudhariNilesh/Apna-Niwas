@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,9 +20,18 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.apnaniwas.apnaniwasDB.connection.APIService;
+import com.example.apnaniwas.apnaniwasDB.connection.RestClient;
+import com.example.apnaniwas.apnaniwasDB.model.CommonResponse;
+import com.example.apnaniwas.apnaniwasDB.model.signupresponse.MemberModel;
 import com.example.apnaniwas.ui.home.HomeFragment;
+import com.example.apnaniwas.util.SharedPreference;
 
 import java.util.Objects;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -31,6 +41,8 @@ public class AddDetailsActivity extends AppCompatActivity {
     EditText flatno,block,noofmem,mem1name,mem2name,mem3name,mem4name,mem5name,mem6name,mem1relation,mem2relation,mem3relation,mem4relation,mem5relation,mem6relation;
     TextView mem1,mem2,mem3,mem4,mem5,mem6;
     LinearLayout member_details;
+    private static APIService apiService = RestClient.createService(APIService.class);
+    private CompositeDisposable disposable = new CompositeDisposable();
     int totalmembers;
     Button addbtn;
     final String MYPREFS="DETAILS";
@@ -50,14 +62,17 @@ public class AddDetailsActivity extends AppCompatActivity {
     final String MEM5RELATION="MEM5RELATION";
     final String MEM6RELATION="MEM6RELATION";
 
-
+    private MemberModel user;
     SharedPreferences sharedpreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_details);
         Toolbar toolbar = findViewById(R.id.toolbarr);
+        user = SharedPreference.getInstance(this).getMember();
+
         sharedpreferences = getSharedPreferences(MYPREFS, Context.MODE_PRIVATE);
+
         ((AppCompatActivity) Objects.requireNonNull(this)).setSupportActionBar(toolbar);
         flatno=findViewById(R.id.et_flateNumber);
         block=findViewById(R.id.et_block);
@@ -91,7 +106,6 @@ public class AddDetailsActivity extends AppCompatActivity {
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -372,10 +386,84 @@ public class AddDetailsActivity extends AppCompatActivity {
                 editor.putString(FLATNO, fno);
                 editor.putString(BLOCK, blk);
                 editor.putInt(TOTALMEMBERS, tot);
-                if(totalmembers<=6)
+
+                if(totalmembers==6){
+                    editor.putString(MEM6NAME, mem6name.getText().toString());
+                    editor.putString(MEM6RELATION, mem6relation.getText().toString());
+
+                    editor.putString(MEM5NAME, mem5name.getText().toString());
+                    editor.putString(MEM5RELATION, mem5relation.getText().toString());
+
+                    editor.putString(MEM4NAME, mem4name.getText().toString());
+                    editor.putString(MEM4RELATION, mem4relation.getText().toString());
+
+                    editor.putString(MEM3NAME, mem3name.getText().toString());
+                    editor.putString(MEM3RELATION, mem3relation.getText().toString());
+
+                    editor.putString(MEM2NAME, mem2name.getText().toString());
+                    editor.putString(MEM2RELATION, mem2relation.getText().toString());
+
+                    editor.putString(MEM1NAME, mem1name.getText().toString());
+                    editor.putString(MEM1RELATION, mem1relation.getText().toString());
+                }else if(totalmembers == 5){
+                    editor.putString(MEM5NAME, mem5name.getText().toString());
+                    editor.putString(MEM5RELATION, mem5relation.getText().toString());
+
+                    editor.putString(MEM4NAME, mem4name.getText().toString());
+                    editor.putString(MEM4RELATION, mem4relation.getText().toString());
+
+                    editor.putString(MEM3NAME, mem3name.getText().toString());
+                    editor.putString(MEM3RELATION, mem3relation.getText().toString());
+
+                    editor.putString(MEM2NAME, mem2name.getText().toString());
+                    editor.putString(MEM2RELATION, mem2relation.getText().toString());
+
+                    editor.putString(MEM1NAME, mem1name.getText().toString());
+                    editor.putString(MEM1RELATION, mem1relation.getText().toString());
+
+                }else if(totalmembers == 4){
+                    editor.putString(MEM4NAME, mem4name.getText().toString());
+                    editor.putString(MEM4RELATION, mem4relation.getText().toString());
+
+                    editor.putString(MEM3NAME, mem3name.getText().toString());
+                    editor.putString(MEM3RELATION, mem3relation.getText().toString());
+
+                    editor.putString(MEM2NAME, mem2name.getText().toString());
+                    editor.putString(MEM2RELATION, mem2relation.getText().toString());
+
+                    editor.putString(MEM1NAME, mem1name.getText().toString());
+                    editor.putString(MEM1RELATION, mem1relation.getText().toString());
+
+                }else if(totalmembers == 3){
+                    editor.putString(MEM3NAME, mem3name.getText().toString());
+                    editor.putString(MEM3RELATION, mem3relation.getText().toString());
+
+                    editor.putString(MEM2NAME, mem2name.getText().toString());
+                    editor.putString(MEM2RELATION, mem2relation.getText().toString());
+
+                    editor.putString(MEM1NAME, mem1name.getText().toString());
+                    editor.putString(MEM1RELATION, mem1relation.getText().toString());
+
+                }else if(totalmembers == 2){
+
+                    editor.putString(MEM2NAME, mem2name.getText().toString());
+                    editor.putString(MEM2RELATION, mem2relation.getText().toString());
+
+                    editor.putString(MEM1NAME, mem1name.getText().toString());
+                    editor.putString(MEM1RELATION, mem1relation.getText().toString());
+
+                }else if(totalmembers == 1){
+
+                    editor.putString(MEM1NAME, mem1name.getText().toString());
+                    editor.putString(MEM1RELATION, mem1relation.getText().toString());
+
+                }
+
+/*                if(totalmembers<=6)
                 {
                     editor.putString(MEM6NAME, mem6name.getText().toString());
                     editor.putString(MEM6RELATION, mem6relation.getText().toString());
+
                     if(totalmembers<=5)
                     {
                         editor.putString(MEM5NAME, mem5name.getText().toString());
@@ -400,13 +488,48 @@ public class AddDetailsActivity extends AppCompatActivity {
                             }
                         }
                     }
-                }
-                editor.commit();
-            }
+                }*/
+                editor.apply();
+               }
+            String memName1 = mem1name.getText().toString();
+            String memName2 = mem2name.getText().toString();
+            String memName3 = mem3name.getText().toString();
+            String memName4 = mem4name.getText().toString();
+            String memName5 = mem6name.getText().toString();
+            String memName6 = mem6name.getText().toString();
+
+            String memRelation1 = mem1relation.getText().toString();
+            String memRelation2 = mem2relation.getText().toString();
+            String memRelation3 = mem3relation.getText().toString();
+            String memRelation4 = mem4relation.getText().toString();
+            String memRelation5 = mem5relation.getText().toString();
+            String memRelation6 = mem6relation.getText().toString();
+
+            sendToServer(noofmem.getText().toString(),user.getMemberId(),flatno.getText().toString(),block.getText().toString(),memName1,memName2,memName3,memName4,memName5,memName6,memRelation1,memRelation2,memRelation3,memRelation4,memRelation5,memRelation6);
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void sendToServer(String memCnt,String memberId, String flatno, String block, String memName1, String memName2, String memName3, String memName4, String memName5, String memName6, String memRelation1, String memRelation2, String memRelation3, String memRelation4, String memRelation5, String memRelation6) {
+        String address = flatno+", "+block;
+        disposable.add( apiService.addFamliyMem("add_family_mem",memCnt,memName1,memName2,memName3,memName4,memName5,memName6,memRelation1,memRelation2,memRelation3,memRelation4,memRelation5,memRelation6,address,memberId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::handleSuccess, this::handleError));
+
+    }
+
+    private void handleSuccess(CommonResponse commonResponse) {
+        if(commonResponse.getStatus()==200)
+        {
             Intent i =new Intent(this,BottomNavigationBar.class);
             startActivity(i);
             finish();
         }
-        return super.onOptionsItemSelected(item);
+    }
+
+    private void handleError(Throwable throwable) {
+        Log.e("FETCH ERROR  ", "onError: " + throwable.getMessage());
     }
 }

@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.apnaniwas.notification.NotificationBoard">
+    tools:context="com.example.apnaniwas.notification.NotificationBoard"
+    android:background="@color/Gray100">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

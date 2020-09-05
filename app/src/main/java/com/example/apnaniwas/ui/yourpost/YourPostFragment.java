@@ -1,13 +1,19 @@
 package com.example.apnaniwas.ui.yourpost;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,13 +22,29 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.apnaniwas.R;
+import com.example.apnaniwas.apnaniwasDB.connection.VariableBag;
+import com.example.apnaniwas.apnaniwasDB.model.signupresponse.MemberModel;
 import com.example.apnaniwas.postuploader.AddNewPost;
+import com.example.apnaniwas.ui.home.HomeFragment;
+import com.example.apnaniwas.ui.home.homepost.HomePostModel;
+import com.example.apnaniwas.util.SharedPreference;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 
 
 public class YourPostFragment extends Fragment {
+
     YourPostAdapter mAdapter;
     RecyclerView mRecyclerView;
 
@@ -40,13 +62,15 @@ public class YourPostFragment extends Fragment {
             "https://images.unsplash.com/photo-1438480478735-3234e63615bb?dpr=2&fit=crop&fm=jpg&h=725&q=50&w=1300",
             "https://images.unsplash.com/photo-1438027316524-6078d503224b?dpr=2&fit=crop&fm=jpg&h=725&q=50&w=1300"
     };
+    private ArrayList<HomePostModel> PostDataArryList;
+    MemberModel user = SharedPreference.getInstance(getContext()).getMember();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,17 +78,34 @@ public class YourPostFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_your_post, container, false);
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity) Objects.requireNonNull(getActivity())).setSupportActionBar(toolbar);
-        for (int i = 0; i < IMGS.length; i++) {
 
+        PostDataArryList = HomeFragment.posts;
+
+        for (int i = 0; i < PostDataArryList.size(); i++) {
+            YourPostViewModel imageModel = new YourPostViewModel();
+
+            if(PostDataArryList.get(i).getPostMemId().equals(user.getMemberId())){
+                imageModel.setImgTitle(PostDataArryList.get(i).getPostTitle());
+                imageModel.setImgUrl(PostDataArryList.get(i).getImgURL());
+                imageModel.setPostId(PostDataArryList.get(i).getPostId());
+                data.add(imageModel);
+            }
+
+
+ /*           Log.e( "onCreateView: ", PostDataArryList.get(i).getImgURL());
+            Log.e( "onCreateView: ", PostDataArryList.get(i).getPostId());*/
+        }
+
+       for (int i = 0; i < IMGS.length; i++) {
             YourPostViewModel imageModel = new YourPostViewModel();
             imageModel.setImgTitle("Image " + i);
             imageModel.setImgUrl(IMGS[i]);
             data.add(imageModel);
         }
+
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         mRecyclerView.setHasFixedSize(true);
-
 
         mAdapter = new YourPostAdapter(getContext(), data);
         mRecyclerView.setAdapter(mAdapter);
