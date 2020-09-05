@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddDetailsActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            </com.google.android.material.appbar.AppBarLayout>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarr"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:elevation="6dp"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="Apna Niwas"
+                app:titleTextColor="@color/colorWhite" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Add Details"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/_30sdp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:text="Flat No."
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="normal"/>
+
+            <EditText
+                android:textColor="#000"
+                android:id="@+id/et_flateNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:background="@drawable/login_curve_card"
+                android:hint="Enter Flat No."
+                android:maxLength="10"
+                android:paddingLeft="@dimen/_15sdp"
+                android:paddingRight="@dimen/_15sdp"
+                android:singleLine="true"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Block"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="normal"/>
+
+
+            <EditText
+                android:textColor="#000"
+                android:id="@+id/et_block"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:background="@drawable/login_curve_card"
+                android:hint="Enter Block"
+                android:paddingLeft="@dimen/_15sdp"
+                android:paddingRight="@dimen/_15sdp"
+                android:textSize="@dimen/_12sdp"
+                android:singleLine="true"
+                android:maxLength="10"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Number Of Members in the house:"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="normal"/>
+
+
+            <EditText
+                android:textColor="#000"
+                android:inputType="number"
+                android:maxLines="1"
+                android:id="@+id/et_noofmem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:background="@drawable/login_curve_card"
+                android:hint="Maximum 6"
+                android:paddingLeft="@dimen/_15sdp"
+                android:paddingRight="@dimen/_15sdp"
+                android:textSize="@dimen/_12sdp"
+                android:singleLine="true"
+                android:maxLength="10"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/member_details"
+                android:visibility="invisible"
+                android:orientation="vertical" >
+                <TextView
+                    android:id="@+id/tv_mem1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="Member 1:"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="normal"/>
+                <LinearLayout
+                    android:id="@+id/mem1"
+                    android:weightSum="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:textColor="#000"
+                        android:layout_weight="7"
+                        android:id="@+id/et_mem1name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:background="@drawable/login_curve_card"
+                        android:hint="Name"
+                        android:paddingLeft="@dimen/_15sdp"
+                        android:paddingRight="@dimen/_15sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:singleLine="true"/>
+                    <EditText
+                        android:textColor="#000"
+                        android:layout_weight="3"
+                        android:id="@+id/et_mem1relation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:background="@drawable/login_curve_card"
+                        android:hint="Relation"
+                        android:paddingLeft="@dimen/_15sdp"
+                        android:paddingRight="@dimen/_15sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:singleLine="true"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_mem2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="Member 2:"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="normal"/>
+                <LinearLayout
+                    android:id="@+id/mem2"
+                    android:weightSum="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:textColor="#000"
+                        android:layout_weight="7"
+                        android:id="@+id/et_mem2name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:background="@drawable/login_curve_card"
+                        android:hint="Name"
+                        android:paddingLeft="@dimen/_15sdp"
+                        android:paddingRight="@dimen/_15sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:singleLine="true"/>
+                    <EditText
+                        android:textColor="#000"
+                        android:layout_weight="3"
+                        android:id="@+id/et_mem2relation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:background="@drawable/login_curve_card"
+                        android:hint="Relation"
+                        android:paddingLeft="@dimen/_15sdp"
+                        android:paddingRight="@dimen/_15sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:singleLine="true"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_mem3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="Member 3:"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="normal"/>
+                <LinearLayout
+                    android:id="@+id/mem3"
+                    android:weightSum="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:textColor="#000"
+                        android:layout_weight="7"
+                        android:id="@+id/et_mem3name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:background="@drawable/login_curve_card"
+                        android:hint="Name"
+                        android:paddingLeft="@dimen/_15sdp"
+                        android:paddingRight="@dimen/_15sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:singleLine="true"/>
+                    <EditText
+                        android:textColor="#000"
+                        android:layout_weight="3"
+                        android:id="@+id/et_mem3relation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:background="@drawable/login_curve_card"
+                        android:hint="Relation"
+                        android:paddingLeft="@dimen/_15sdp"
+                        android:paddingRight="@dimen/_15sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:singleLine="true"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_mem4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="Member 4:"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="normal"/>
+                <LinearLayout
+                    android:id="@+id/mem4"
+                    android:weightSum="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:textColor="#000"
+                        android:layout_weight="7"
+                        android:id="@+id/et_mem4name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:background="@drawable/login_curve_card"
+                        android:hint="Name"
+                        android:paddingLeft="@dimen/_15sdp"
+                        android:paddingRight="@dimen/_15sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:singleLine="true"/>
+                    <EditText
+                        android:textColor="#000"
+                        android:layout_weight="3"
+                        android:id="@+id/et_mem4relation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:background="@drawable/login_curve_card"
+                        android:hint="Relation"
+                        android:paddingLeft="@dimen/_15sdp"
+                        android:paddingRight="@dimen/_15sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:singleLine="true"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_mem5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="Member 5:"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="normal"/>
+                <LinearLayout
+                    android:id="@+id/mem5"
+                    android:weightSum="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:textColor="#000"
+                        android:layout_weight="7"
+                        android:id="@+id/et_mem5name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:background="@drawable/login_curve_card"
+                        android:hint="Name"
+                        android:paddingLeft="@dimen/_15sdp"
+                        android:paddingRight="@dimen/_15sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:singleLine="true"/>
+                    <EditText
+                        android:textColor="#000"
+                        android:layout_weight="3"
+                        android:id="@+id/et_mem5relation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:background="@drawable/login_curve_card"
+                        android:hint="Relation"
+                        android:paddingLeft="@dimen/_15sdp"
+                        android:paddingRight="@dimen/_15sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:singleLine="true"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_mem6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="Member 6:"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="normal"/>
+                <LinearLayout
+                    android:id="@+id/mem6"
+                    android:weightSum="10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:textColor="#000"
+                        android:layout_weight="7"
+                        android:id="@+id/et_mem6name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:background="@drawable/login_curve_card"
+                        android:hint="Name"
+                        android:paddingLeft="@dimen/_15sdp"
+                        android:paddingRight="@dimen/_15sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:singleLine="true"/>
+                    <EditText
+                        android:textColor="#000"
+                        android:layout_weight="3"
+                        android:id="@+id/et_mem6relation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginHorizontal="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:background="@drawable/login_curve_card"
+                        android:hint="Relation"
+                        android:paddingLeft="@dimen/_15sdp"
+                        android:paddingRight="@dimen/_15sdp"
+                        android:textSize="@dimen/_12sdp"
+                        android:singleLine="true"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

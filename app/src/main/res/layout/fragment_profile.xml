@@ -87,16 +87,17 @@
                             android:textSize="21sp"
                             android:textStyle="bold"
                            />
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/edit_profile"
+                        <TextView
+                            android:id="@+id/tvFlatnoBlock"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Edit Profile"
-                            android:layout_gravity="center"
-                            android:backgroundTint="@color/colorWhite"
-                            android:textColor="@color/colorBlue">
-                        </com.google.android.material.button.MaterialButton>
+                            android:layout_gravity="center_horizontal"
+                            android:text="Name"
+                            android:textColor="#fff"
+                            android:textSize="21sp"
+                            />
+
+
                     </LinearLayout>
 
 
@@ -123,6 +124,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/tvabout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="8dp"

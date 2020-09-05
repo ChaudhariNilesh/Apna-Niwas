@@ -4,8 +4,9 @@
     package="com.example.apnaniwas">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -13,57 +14,62 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".chat.ActivityChatModule"
-            android:windowSoftInputMode="adjustPan"/>
+        tools:ignore="GoogleAppIndexingWarning"
+        android:usesCleartextTraffic="true">
+
         <activity
             android:name=".signup.Signup"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".login.Login"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".BottomNavigationBar"
-            android:theme="@style/BottomNavTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/NoActionBar">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+
+        <activity android:name=".login.Login" android:theme="@style/NoActionBar">
+
+        </activity>
+
+        <activity android:name=".BottomNavigationBar" android:theme="@style/BottomNavTheme">
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+
+
+        </activity>
+
         <activity
             android:name=".notification.NotificationBoard"
             android:label="@string/notice_title" />
+
         <activity android:name=".notification.noticequeries.NoticeQueries" />
+
         <activity
             android:name=".ui.payment.mybills.PaymentHandler"
             android:theme="@style/AppTheme" />
+
         <activity
             android:name=".tmp.TmpProfile"
             android:theme="@style/BottomNavTheme" />
-        <activity
-            android:name=".signup.MobileVerification"
-            android:theme="@style/BottomNavTheme" />
-        <activity
-            android:name=".SplashActivity"
-            android:theme="@style/SplashTheme" />
-        <activity
-            android:name=".signup.MobileRegistration"
-            android:theme="@style/BottomNavTheme" />
-        <activity
-            android:name=".postuploader.AddNewPost"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".login.ForgotPassword"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".login.VerifyResetCode"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".login.NewPassword"
-            android:theme="@style/NoActionBar" />
+        <activity android:name=".signup.MobileVerification" android:theme="@style/BottomNavTheme">
+        </activity>
+
+        <activity android:name=".SplashActivity" android:theme="@style/SplashTheme">
+
+        </activity>
+        <activity android:name=".signup.MobileRegistration"
+            android:theme="@style/BottomNavTheme">
+
+        </activity>
+        <activity android:name=".postuploader.AddNewPost" android:theme="@style/NoActionBar" />
+        <activity android:name=".login.ForgotPassword"  android:theme="@style/NoActionBar">
+        </activity>
+        <activity android:name=".login.VerifyResetCode" android:theme="@style/NoActionBar">
+
+        </activity>
+        <activity android:name=".login.NewPassword" android:theme="@style/NoActionBar"/>
         <activity android:name=".ui.yourpost.DetailActivity" />
+
     </application>
 
 </manifest>
