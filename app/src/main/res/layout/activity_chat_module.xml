@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clipToPadding="false"
+    android:focusableInTouchMode="true"
+    android:id="@+id/my_message_layout">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/rv_messages"
+        android:layout_weight="2"
+        android:divider="#fff"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_10sdp"
+        />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/_5sdp">
+
+        <EditText
+            android:id="@+id/edit_Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:ems="10"
+            android:hint="Write a message"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:imeOptions="actionDone"
+            android:background="@drawable/chat_edittext_bg"
+            android:padding="@dimen/_5sdp"
+            android:maxWidth="@dimen/_200sdp"
+            android:inputType="textMultiLine"
+            android:isScrollContainer="true"
+            android:overScrollMode="ifContentScrolls"
+            android:scrollbarStyle="insideOverlay"
+            android:scrollbars="vertical"
+            android:maxLines="10"
+            android:foregroundGravity="bottom"/>
+
+        <ImageButton
+            android:id="@+id/btn_send_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:padding="20dp"
+            android:layout_marginHorizontal="@dimen/_5sdp"
+            android:background="@drawable/ic_send_black"
+            android:layout_marginBottom="@dimen/_1sdp" />
+    </LinearLayout>
+</LinearLayout>
